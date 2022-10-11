@@ -1,114 +1,173 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
-  FlatList,
-  SafeAreaView,
   View,
   Text,
+  SafeAreaView,
   Image,
   StyleSheet,
-  Dimensions,
+  NativeModules,
   TouchableOpacity,
 } from 'react-native'; 
-import Dialog, {
+// const {react-native-popup-dialog} = NativeModules;
+import { BetterImage } from './Src/Components/BetterImage'
+import  {
+  Dialog,
   DialogTitle,
   DialogContent,
   ScaleAnimation,
-
 } from 'react-native-popup-dialog';
 
-const { 
-  height:SCREEN_HIEGHT,
-  width : SCREEN_WIDTH,
-} =  Dimensions.get('screen');
- 
-export const ConfirmAlert = (props) => {
-    const {visible,onClose,userName,onRemoveBtn } = props;
- 
-
-
-
-
-
-
- 
-  return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.container}>      
- 
-        <Dialog
+  
+export const ScanQRAlert = (props) => {
+  const {visible,onClose,userName } = props;
+  console.log("ScanQRAlert==>",props);
+  return ( 
+      
+       <Dialog
           onTouchOutside={onClose}
-          onHardwareBackPress={onClose}
-          width={0.9}         
+          width={0.9}
           visible={visible}
-          dialogAnimation={new ScaleAnimation()}             
-          dialogTitle={
-            <DialogTitle
-              hasTitleBar={false}
-            />
-          }         
+          dialogAnimation={new ScaleAnimation()}
+          onHardwareBackPress={onClose}         
           >
+            
+          <DialogContent>
+            <View style={{alignItems:'center'}}>
             <TouchableOpacity
               onPress={onClose}
               style={{
-                width: 45,
-                height: 45,
+                width: 35,
+                height: 35,
                 justifyContent:"center",
                 alignItems:'center',                
-                alignSelf:"flex-end",
-                position:"absolute",
-                top:5,
-                right:5,
-               
+                alignSelf:"flex-end",               
+                top:5,               
               }}>
               <Image
                 resizeMode={'contain'}
                 style={{
-                  height: 20,
-                  width: 20,
+                  height: 17,
+                  width: 17,
                   
                 }}
-                source={{uri:"https://cdn4.iconfinder.com/data/icons/social-messaging-ui-coloricon-1/21/39-512.png"}}
+                source={{uri:"https://www.pngkey.com/png/full/105-1058931_black-cross-png-cross-sign-png-black.png"}}
               />
             </TouchableOpacity>
-          <DialogContent>
-          
-          
-              <Text style={{
-                textAlign:'center',
-                marginHorizontal:5,
-                fontSize:20,
-                fontWeight:"600",
-              }}>
-                Are you sure, you want to remove {'\n'}this friend{'  '}
-                      <Text 
-                        style={{                         
-                          color:"#00C3FF",
-                          textDecorationLine:"underline",
-                          fontWeight:"bold"
-                        }}>
-                         {userName}{' '}
-                        
-                        </Text>
-                        <Text 
-                          style={{                         
-                            color:"#00C3FF",                           
-                            fontWeight:"bold"
-                          }}>
-                         ?
-                        </Text>
-                        
-              </Text>
-              
-              <DeleteBtn
-                  title={'Remove'}
-                  onPress={onRemoveBtn}
+
+              <BetterImage
+                  source={{uri:"https://www.hellotech.com/guide/wp-content/uploads/2020/05/HelloTech-qr-code-1024x1024.jpg"}}
+                  style={{height:200,width:200}}
+                  resizeMode={'contain'}
               />
+
+              <Text style={{
+                   fontSize: 17,
+                   marginTop:10,
+                   fontWeight: 'bold',
+                   color: 'black',
+                   textAlign: 'center',                 
+              }}>{userName}</Text>
+              
+              
+            </View>
           </DialogContent>
         </Dialog>
  
+  
+   
+  );
+};
 
-      </View>
-    </SafeAreaView>
+
+
+
+
+
+
+
+
+export const ConfirmAlert = (props) => {
+    const {visible,onClose,userName,onRemoveBtn } = props;
+  
+  return (
+      
+ 
+  
+ 
+    <Dialog
+    onTouchOutside={onClose}
+    onHardwareBackPress={onClose}
+    width={0.9}         
+    visible={visible}
+    dialogAnimation={new ScaleAnimation()}             
+    dialogTitle={
+      <DialogTitle
+        hasTitleBar={false}
+      />
+    }         
+    >
+      <TouchableOpacity
+        onPress={onClose}
+        style={{
+          width: 45,
+          height: 45,
+          justifyContent:"center",
+          alignItems:'center',                
+          alignSelf:"flex-end",
+          position:"absolute",
+          top:5,
+          right:5,
+         
+        }}>
+        <Image
+          resizeMode={'contain'}
+          style={{
+            height: 20,
+            width: 20,
+            
+          }}
+          source={{uri:"https://cdn4.iconfinder.com/data/icons/social-messaging-ui-coloricon-1/21/39-512.png"}}
+        />
+      </TouchableOpacity>
+    <DialogContent>
+    
+    
+        <Text style={{
+          textAlign:'center',
+          marginHorizontal:5,
+          fontSize:20,
+          fontWeight:"600",
+        }}>
+          Are you sure, you want to remove {'\n'}this friend{'  '}
+                <Text 
+                  style={{                         
+                    color:"#00C3FF",
+                    textDecorationLine:"underline",
+                    fontWeight:"bold"
+                  }}>
+                   {userName}{' '}
+                  
+                  </Text>
+                  <Text 
+                    style={{                         
+                      color:"#00C3FF",                           
+                      fontWeight:"bold"
+                    }}>
+                   ?
+                  </Text>
+                  
+        </Text>
+        
+        <DeleteBtn
+            title={'Remove'}
+            onPress={onRemoveBtn}
+        />
+    </DialogContent>
+  </Dialog>
+ 
+
+ 
+
   );
 };
 
