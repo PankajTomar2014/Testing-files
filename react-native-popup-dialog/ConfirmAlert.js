@@ -1,4 +1,3 @@
-
 import React, {useState} from 'react';
 import {
   FlatList,
@@ -16,64 +15,31 @@ import Dialog, {
   ScaleAnimation,
 
 } from 'react-native-popup-dialog';
-import { closeButton } from './Src/Utils/Icon';
 
 const { 
   height:SCREEN_HIEGHT,
   width : SCREEN_WIDTH,
 } =  Dimensions.get('screen');
  
-const App = () => {
+export const ConfirmAlert = (props) => {
+    const {visible,onClose,userName,onRemoveBtn } = props;
  
-  const [
-    scaleAnimationDialog, 
-    setScaleAnimationDialog
-  ] = useState(true);
 
-  const [name,setName] = useState('');
 
-  const renderItem = (item,index)=>{
-    return(
-      <TouchableOpacity 
-      onPress={() =>{          
-          setName(item.name);
-          setScaleAnimationDialog(true)
-      }
-      }
-      activeOpacity={0.5}
-      style={{
-        padding:10,
-        width:350,
-        backgroundColor:"gray",
-        marginVertical:10
-      }}>
 
-        <Text>Name : {item.name}</Text>
 
-      </TouchableOpacity>
-    )
-  }
+
 
  
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.container}>     
-     
- 
-      
-      <FlatList
-        data={data}
-        renderItem={({item,index})=> renderItem(item,index)}
-      
-      />
-
-
+      <View style={styles.container}>      
  
         <Dialog
-          onTouchOutside={() =>setScaleAnimationDialog(false)}
-          onHardwareBackPress={() =>setScaleAnimationDialog(false)}
+          onTouchOutside={onClose}
+          onHardwareBackPress={onClose}
           width={0.9}         
-          visible={scaleAnimationDialog}
+          visible={visible}
           dialogAnimation={new ScaleAnimation()}             
           dialogTitle={
             <DialogTitle
@@ -82,7 +48,7 @@ const App = () => {
           }         
           >
             <TouchableOpacity
-              onPress={() => setScaleAnimationDialog(false)}
+              onPress={onClose}
               style={{
                 width: 45,
                 height: 45,
@@ -101,7 +67,7 @@ const App = () => {
                   width: 20,
                   
                 }}
-                source={closeButton}
+                source={{uri:"https://cdn4.iconfinder.com/data/icons/social-messaging-ui-coloricon-1/21/39-512.png"}}
               />
             </TouchableOpacity>
           <DialogContent>
@@ -120,13 +86,22 @@ const App = () => {
                           textDecorationLine:"underline",
                           fontWeight:"bold"
                         }}>
-                         {name}?
+                         {userName}{' '}
+                        
                         </Text>
+                        <Text 
+                          style={{                         
+                            color:"#00C3FF",                           
+                            fontWeight:"bold"
+                          }}>
+                         ?
+                        </Text>
+                        
               </Text>
               
               <DeleteBtn
                   title={'Remove'}
-                  onPress={() => setScaleAnimationDialog(false)}
+                  onPress={onRemoveBtn}
               />
           </DialogContent>
         </Dialog>
@@ -136,7 +111,6 @@ const App = () => {
     </SafeAreaView>
   );
 };
-export default App;
 
 export const DeleteBtn = (props)=>{
   const { title,onPress } = props;
@@ -196,33 +170,7 @@ export const DeleteIconBtn = (props)=>{
 };
 
 
-const data =[
-  {
-    name:"Pankaj Tomar"
-  },
-  {
-    name:"Vipin"
-  },
-  {
-    name:"Pankaj Tomar"
-  },
-  {
-    name:"Theodore"
-  },
-  {
-    name:"Jackson Vipin"
-  },
-  {
-    name:"Matthew Jackson"
-  },
-  {
-    name:"Vipin Matthew"
-  },
-  {
-    name:"Christopher Tomar"
-  },
 
-];
  
 const styles = StyleSheet.create({
   container: {
@@ -249,5 +197,3 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
-
-
