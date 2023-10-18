@@ -11,7 +11,7 @@
     const environment = 1+ ""  // 0 for Production ,1 for Developement
 
      const [amount, setAmount] = useState("10");
-     const [productInfo, setProductInfo] = useState('productInfo');
+     const [productInfo, setProductInfo] = useState('Pankaj Tomar is the best developer');
      const [firstName, setFirstName] = useState('Pankaj Tomar');
      const [email, setEmail] = useState('pankaj.tomar@gmail.com');
      const [phone, setPhone] = useState('999999999');
