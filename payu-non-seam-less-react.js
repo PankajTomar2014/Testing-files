@@ -12,9 +12,9 @@
 
      const [amount, setAmount] = useState("10");
      const [productInfo, setProductInfo] = useState('productInfo');
-     const [firstName, setFirstName] = useState('firstName');
-     const [email, setEmail] = useState('test@gmail.com');
-     const [phone, setPhone] = useState('9999999999');
+     const [firstName, setFirstName] = useState('Pankaj Tomar');
+     const [email, setEmail] = useState('pankaj.tomar@gmail.com');
+     const [phone, setPhone] = useState('999999999');
      const [ios_surl, setIosSurl] = useState('https://payu.herokuapp.com/ios_success');
      const [ios_furl, setIosFurl] = useState('https://payu.herokuapp.com/ios_failure');
  
@@ -28,12 +28,12 @@
      const [udf5, setUdf5] = useState('udf5');
   
  
-     const [userCredential, setUserCredential] = useState('umang:arya');
+     const [userCredential, setUserCredential] = useState('udid:pankaj_tomar');
  
      const [enableSI, setEnableSI] = useState(false);
      const [primaryColor, setPrimaryColor] = useState('#aabbcc');
      const [secondaryColor, setSecondaryColor] = useState('#000000');
-     const [merchantName, setMerchantName] = useState("Rashan vala");
+     const [merchantName, setMerchantName] = useState("Pankaj Tomar");
      const [merchantLogo, setMerchantLogo] = useState("Jio");
      const [showExitConfirmationOnCheckoutScreen, setShowExitConfirmationOnCheckoutScreen] = useState(true);
      const [showExitConfirmationOnPaymentScreen, setShowExitConfirmationOnPaymentScreen] = useState(true);
